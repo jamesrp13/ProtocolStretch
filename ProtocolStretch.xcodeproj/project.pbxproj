@@ -16,6 +16,7 @@
 		1A9C4F231C83F029005C7FB5 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9C4F221C83F029005C7FB5 /* Person.swift */; };
 		1A9C4F251C83F1F2005C7FB5 /* PersonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9C4F241C83F1F2005C7FB5 /* PersonTableViewController.swift */; };
 		1A9C4F271C83F717005C7FB5 /* PersonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9C4F261C83F717005C7FB5 /* PersonController.swift */; };
+		1A9C4F2D1C84026F005C7FB5 /* Instructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9C4F2C1C84026F005C7FB5 /* Instructions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		1A9C4F221C83F029005C7FB5 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		1A9C4F241C83F1F2005C7FB5 /* PersonTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonTableViewController.swift; sourceTree = "<group>"; };
 		1A9C4F261C83F717005C7FB5 /* PersonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonController.swift; sourceTree = "<group>"; };
+		1A9C4F2C1C84026F005C7FB5 /* Instructions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instructions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				1A9C4F241C83F1F2005C7FB5 /* PersonTableViewController.swift */,
 				1A9C4F261C83F717005C7FB5 /* PersonController.swift */,
 				1A9C4F221C83F029005C7FB5 /* Person.swift */,
+				1A9C4F2C1C84026F005C7FB5 /* Instructions.swift */,
 				1A9C4EF91C83EC29005C7FB5 /* Assets.xcassets */,
 				1A9C4EFB1C83EC29005C7FB5 /* LaunchScreen.storyboard */,
 				1A9C4EFE1C83EC29005C7FB5 /* Info.plist */,
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A9C4F251C83F1F2005C7FB5 /* PersonTableViewController.swift in Sources */,
+				1A9C4F2D1C84026F005C7FB5 /* Instructions.swift in Sources */,
 				1A9C4F231C83F029005C7FB5 /* Person.swift in Sources */,
 				1A9C4F271C83F717005C7FB5 /* PersonController.swift in Sources */,
 				1A9C4EF31C83EC29005C7FB5 /* AppDelegate.swift in Sources */,
