@@ -34,7 +34,7 @@ class PersonTableViewController: UITableViewController {
         if editingStyle == .Delete {
             // Delete the row from the data source
             PersonController.sharedController.deletePerson(PersonController.sharedController.people[indexPath.row])
-            tableView.reloadData()
+            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         }
     }
     
