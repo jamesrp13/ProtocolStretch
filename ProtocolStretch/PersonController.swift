@@ -12,31 +12,15 @@ class PersonController {
     
     static let sharedController = PersonController()
     
-    var people: [Person] {
-        var people: [Person] = []
-        for key in peopleKeys {
-            guard let personDictionary = NSUserDefaults.standardUserDefaults().valueForKey(key) as? [String: AnyObject],
-                person = Person(dictionary: personDictionary, key: key) else {break}
-            people.append(person)
-        }
-        return people
-    }
+    var people: [Person] = []
     
-    var peopleKeys: [String] {
-        guard let keys = NSUserDefaults.standardUserDefaults().valueForKey("PeopleKeys") as? [String] else {return []}
-        return keys
-    }
-    
-    static func addPerson(firstName: String, lastName: String, age: Int) {
+    func addPerson(firstName: String, lastName: String, age: Int) {
         let person = Person(firstName: firstName, lastName: lastName, age: age)
-        person.save()
-        let keys = sharedController.peopleKeys + [person.key]
-        NSUserDefaults.standardUserDefaults().setValue(keys, forKey: "PeopleKeys")
+        people.append(person)
     }
     
-    static func deletePerson(person: Person) {
-        person.delete()
-        let keys = sharedController.peopleKeys.filter {$0 != person.key}
-        NSUserDefaults.standardUserDefaults().setValue(keys, forKey: "PeopleKeys")
+    func deletePerson(person: Person) {
+        guard let index = people.indexOf(person) else {return}
+        people.removeAtIndex(index)
     }
 }

@@ -15,27 +15,17 @@ class PersonTableViewController: UITableViewController {
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return PersonController.sharedController.people.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCellWithIdentifier("personCell", forIndexPath: indexPath)
-        cell.textLabel?.text = PersonController.sharedController.people[indexPath.row].fullName
-        cell.detailTextLabel?.text = "Age: \(PersonController.sharedController.people[indexPath.row].age)"
+        let person = PersonController.sharedController.people[indexPath.row]
+        cell.textLabel?.text = person.fullName
+        cell.detailTextLabel?.text = "Age: \(person.age)"
         return cell
     }
     
@@ -43,7 +33,7 @@ class PersonTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            PersonController.deletePerson(PersonController.sharedController.people[indexPath.row])
+            PersonController.sharedController.deletePerson(PersonController.sharedController.people[indexPath.row])
             tableView.reloadData()
         }
     }
@@ -55,7 +45,7 @@ class PersonTableViewController: UITableViewController {
                 lastName = addPersonAlertController.textFields?[1].text,
                 ageString = addPersonAlertController.textFields?.last?.text,
                 age = Int(ageString) else {return}
-            PersonController.addPerson(firstName, lastName: lastName, age: age)
+            PersonController.sharedController.addPerson(firstName, lastName: lastName, age: age)
             self.tableView.reloadData()
         }
         
