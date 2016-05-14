@@ -9,20 +9,20 @@
 import Foundation
 
 protocol PersistentType {
-    var key: String { get set }
-    var objectAsDictionary: [String: AnyObject] { get }
+    var saveKey: String {get}
+    var objectAsDictionary: [String: AnyObject] {get}
     
+    init?(dictionary: [String: AnyObject])
     func save()
-    func delete()
-    
 }
 
 extension PersistentType {
     func save() {
-        NSUserDefaults.standardUserDefaults().setValue(objectAsDictionary, forKey: key)
-    }
-    
-    func delete() {
-        NSUserDefaults.standardUserDefaults().removeObjectForKey(key)
+        if var peopleDictionaryArray = NSUserDefaults.standardUserDefaults().objectForKey(saveKey) as? [[String: AnyObject]] {
+            peopleDictionaryArray.append(self.objectAsDictionary)
+            NSUserDefaults.standardUserDefaults().setValue(peopleDictionaryArray, forKey: saveKey)
+        } else {
+            NSUserDefaults.standardUserDefaults().setValue([self.objectAsDictionary], forKey: saveKey)
+        }
     }
 }

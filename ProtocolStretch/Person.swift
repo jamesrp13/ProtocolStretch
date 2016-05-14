@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Person: PersistentType {
+class Person: PersistentType, Equatable {
     let firstName: String
     let lastName: String
     let age: Int
@@ -16,7 +16,7 @@ class Person: PersistentType {
         return firstName + " " + lastName
     }
     
-    var key: String
+    var saveKey: String = "people"
     
     var objectAsDictionary: [String: AnyObject] {
         return ["firstName":firstName, "lastName":lastName, "age":age]
@@ -26,22 +26,18 @@ class Person: PersistentType {
         self.firstName = firstName
         self.lastName = lastName
         self.age = age
-        self.key = "Person\(NSDate())"
     }
     
-    init?(dictionary: [String: AnyObject], key: String) {
+    required init?(dictionary: [String: AnyObject]) {
         guard let firstName = dictionary["firstName"] as? String,
             lastName = dictionary["lastName"] as? String,
-            age = dictionary["age"] as? Int else {
-                self.firstName = ""
-                self.lastName = ""
-                self.age = 0
-                self.key = key
-                return nil
-        }
+            age = dictionary["age"] as? Int else {return nil}
         self.firstName = firstName
         self.lastName = lastName
         self.age = age
-        self.key = key
     }
+}
+
+func ==(lhs: Person, rhs: Person) -> Bool {
+    return lhs.fullName == rhs.fullName && lhs.age == rhs.age
 }
